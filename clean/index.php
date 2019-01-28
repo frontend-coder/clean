@@ -1,59 +1,153 @@
-<?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Clean
- */
+<?php get_header(); ?>
 
-get_header();
-?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<div id="fh5co-portfolio">
+			<div class="fh5co-portfolio-item ">
+				<div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/work_1.jpg);"></div>
+				<div class="fh5co-portfolio-description">
+					<h2>Project First</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					<p><a href="#" class="btn btn-primary">Read the casetudy</a></p>
+				</div>
+			</div>
+			<div class="fh5co-portfolio-item fh5co-img-right">
+				<div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/work_2.jpg);"></div>
+				<div class="fh5co-portfolio-description">
+					<h2>Project Second</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					<p><a href="#" class="btn btn-primary">Read the casetudy</a></p>
+				</div>
+			</div>
+			<div class="fh5co-portfolio-item ">
+				<div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/work_3.jpg);"></div>
+				<div class="fh5co-portfolio-description">
+					<h2>Project Third</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					<p><a href="#" class="btn btn-primary">Read the casetudy</a></p>
+				</div>
+			</div>
+			<div class="fh5co-portfolio-item fh5co-img-right">
+				<div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/work_4.jpg);"></div>
+				<div class="fh5co-portfolio-description">
+					<h2>Project Fourth</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+					<p><a href="#" class="btn btn-primary">Read the casetudy</a></p>
+				</div>
+			</div>
+		</div>
 
-		<?php
-		if ( have_posts() ) :
+		<div id="fh5co-team">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="row">
+							<h2 class="section-lead text-center">Leadership</h2>
+							<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
+								<figure>
+								<img src="images/user.jpg" alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
+								</figure>
+								<h3>Will Barrow</h3>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								<ul class="fh5co-social">
+									<li><a href="#"><i class="icon-twitter"></i></a></li>
+									<li><a href="#"><i class="icon-github"></i></a></li>
+								</ul>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
+								<figure>
+								<img src="images/user_2.jpg" alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
+								</figure>
+								<h3>Max Conversion</h3>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								<ul class="fh5co-social">
+									<li><a href="#"><i class="icon-twitter"></i></a></li>
+									<li><a href="#"><i class="icon-github"></i></a></li>
+								</ul>
+							</div>
+							<div class="clearfix visible-sm-block visible-xs-block"></div>
+							<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
+								<figure>
+								<img src="images/user_3.jpg" alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
+								</figure>
+								<h3>Hanson Deck</h3>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								<ul class="fh5co-social">
+									<li><a href="#"><i class="icon-twitter"></i></a></li>
+									<li><a href="#"><i class="icon-github"></i></a></li>
+								</ul>
+							</div>
+							<div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 fh5co-staff to-animate">
+								<figure>
+								<img src="images/user.jpg" alt="Free HTML5 Template by FREEHTML5.co" class="img-responsive">
+								</figure>
+								<h3>Sue Shei</h3>
+								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								<ul class="fh5co-social">
+									<li><a href="#"><i class="icon-twitter"></i></a></li>
+									<li><a href="#"><i class="icon-github"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+		<div id="fh5co-services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="row">
+							<h2 class="section-lead text-center">Features</h2>
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-present"></i></div>
+								<div class="fh5co-desc">
+									<h3>100% Free</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-eye"></i></div>
+								<div class="fh5co-desc">
+									<h3>Retina Ready</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
+							<div class="clearfix visible-sm-block visible-xs-block"></div>
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-crop"></i></div>
+								<div class="fh5co-desc">
+									<h3>Fully Responsive</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-speedometer"></i></div>
+								<div class="fh5co-desc">
+									<h3>Lightweight</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
+							<div class="clearfix visible-sm-block visible-xs-block"></div>
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-heart"></i></div>
+								<div class="fh5co-desc">
+									<h3>Made with Love</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+								<div class="fh5co-icon to-animate"><i class="icon-umbrella"></i></div>
+								<div class="fh5co-desc">
+									<h3>Eco Friendly</h3>
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+								</div>
+							</div>
+							<div class="clearfix visible-sm-block visible-xs-block"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php get_footer(); ?>

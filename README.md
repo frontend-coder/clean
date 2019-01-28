@@ -22,13 +22,13 @@ clean - в этот каталог будет заливаться тема Word
 
 # Краткая инструкция по посадке простого HTML шаблона на WordPress
 
-##Как активировать тему Wordpress
+## Как активировать тему Wordpress
 
 Необходимо отредактировать файл style.css, он находится в корне темы
 Создать и разместить в корне темы скриншот темы, его размер - 1200 х 900
 
 
-##Как активировать возможность выбора типов постов
+## Как активировать возможность выбора типов постов
 
 Вставьте нижеразмещенный код в файл function.php следующий код
 
@@ -50,11 +50,11 @@ chat - A chat transcript, like so:
 
 ```
 
-##Как разделить файлы на логические части для подключения стилей и скриптов
+## Как разделить файлы на логические части для подключения стилей и скриптов
 
 Необходимо проанализировать файлы .php с челью разделить их, исходя из логическически завершенного значения. Разделение файлов выполняеся в индивыидуальном порядке.
 
-##Как подключить стили css к теме
+## Как подключить стили css к теме
 
 ### Код в functions.php
 
@@ -112,8 +112,62 @@ add_action( 'wp_enqueue_scripts', 'clean_scripts' );
 
 Все подключение стилей и скриптов в ручной верстке необходимо удалить.
 
+## Подключение и активация меню в теме
 
+### Активация меню в файле index.php
 
+Код верстки в  index.php
+
+```
+	<ul class="nav navbar-nav navbar-right">
+								<li class="active"><a href="index.html"><span>Home <span class="border"></span></span></a></li>
+								<li><a href="right-sidebar.html"><span>Right Sidebar <span class="border"></span></span></a></li>
+								<li><a href="left-sidebar.html"><span>Left Sidebar <span class="border"></span></span></a></li>
+</ul>
+```
+
+заменить на следующий:
+
+```
+	<?php
+			wp_nav_menu( array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => '',
+				'menu_class'        => 'nav navbar-nav navbar-right',
+			) );
+			?>
+```
+
+### Активация меню в файле functions.php
+
+```
+// This theme uses wp_nav_menu() in one location.
+		register_nav_menus( array(
+			'menu-1' => esc_html__( 'Primary', 'clean' ),
+		) );
+```
+
+### Стилизация активного пункта меню
+
+Необходимо в css повесить стили оформления активного пункта меню на класс .current-menu-item
+
+Пример
+
+```
+#fh5co-header > .navbar li.current-menu-item a,
+#fh5co-header > .navbar li.active a {
+  background: none !important;
+  color: #e32929;
+}
+```
+
+Если идет ручная верстка необходимо предусмотеть изначально появление класса .current-menu-item и правильно его оформить
+
+```
+	<ul class="nav navbar-nav navbar-right">
+								<li class="current-menu-item"><a href="index.html"> Главная </a> </li>
+	</ul>
+```
 
 
 

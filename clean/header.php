@@ -33,11 +33,21 @@
 						<a class="navbar-brand" href="index.html">Clean</a>
 						</div>
 						<div id="fh5co-navbar" class="navbar-collapse collapse">
-							<ul class="nav navbar-nav navbar-right">
+
+			<?php
+			wp_nav_menu( array(
+				'theme_location' => 'menu-1',
+				'menu_id'        => '',
+				'menu_class'        => 'nav navbar-nav navbar-right',
+			) );
+			?>
+
+					<!-- 		<ul class="nav navbar-nav navbar-right">
 								<li class="active"><a href="index.html"><span>Home <span class="border"></span></span></a></li>
 								<li><a href="right-sidebar.html"><span>Right Sidebar <span class="border"></span></span></a></li>
 								<li><a href="left-sidebar.html"><span>Left Sidebar <span class="border"></span></span></a></li>
-							</ul>
+							</ul> -->
+
 						</div>
 					</div>
 				</div>

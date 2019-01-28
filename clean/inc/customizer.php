@@ -25,7 +25,70 @@ function clean_customize_register( $wp_customize ) {
 			'render_callback' => 'clean_customize_partial_blogdescription',
 		) );
 	}
+
+
+
+
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_options', array(
+        'title' => __('Вывод постов на главной странице', 'clean'),
+        'priority' => 10,
+    ));
+    $wp_customize->add_setting('clean_home_category', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_home_category',
+        array(
+            'label' => __('Отображение постов категории на главной странице', 'clean'),
+            'section' => 'clean_theme_options',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+
+
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_descr', array(
+        'title' => __('Вывод описания сайта в шапке сайта', 'clean'),
+        'priority' => 9,
+    ));
+    $wp_customize->add_setting('clean_descr_page', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_descr_page',
+        array(
+            'label' => __('Введите описание сайта для вывода в шапке сайта', 'clean'),
+            'section' => 'clean_theme_descr',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
 add_action( 'customize_register', 'clean_customize_register' );
 
 /**

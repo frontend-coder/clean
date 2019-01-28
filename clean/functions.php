@@ -44,7 +44,7 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Главное горизонтальное меню', 'clean' ),
+			'menu-1' => esc_html__( 'main horizontal menu', 'clean' ),
 		) );
 
 		/*

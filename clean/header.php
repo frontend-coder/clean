@@ -30,7 +30,7 @@
 						<div class="navbar-header">
 						<!-- Mobile Toggle Menu Button -->
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-						<a class="navbar-brand" href="index.html">Clean</a>
+						<a class="navbar-brand" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a>
 						</div>
 						<div id="fh5co-navbar" class="navbar-collapse collapse">
 
@@ -61,8 +61,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h1 class="intro-lead">Make something you love</h1>
-						<p class="">100% Free HTML5 Template by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a></p>
+						<h1 class="intro-lead"> <?php bloginfo('description'); ?></h1>
+						<p class=""><?php echo get_theme_mod('clean_descr_page'); ?></p>
 					</div>
 				</div>
 			</div>

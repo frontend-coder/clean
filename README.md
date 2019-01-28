@@ -60,13 +60,13 @@ chat - A chat transcript, like so:
 
 ```
 function clean_scripts() {
-	wp_enqueue_style( 'clean-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'clean-google-font1', 'http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' );
-	wp_enqueue_style( 'clean-google-font2', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' );
-	wp_enqueue_style( 'clean-animate-style', get_template_directory_uri() . '/assets/css/animate.css' );
-	wp_enqueue_style( 'clean-icomoon-style', get_template_directory_uri() . '/assets/css/icomoon.css' );
-	wp_enqueue_style( 'clean-simplelineicons-style', get_template_directory_uri() . '/assets/css/simple-line-icons.css' );
-	wp_enqueue_style( 'clean-oun-style', get_template_directory_uri() . '/assets/css/style.css' );
+wp_enqueue_style( 'clean-style', get_stylesheet_uri() );
+wp_enqueue_style( 'clean-google-font1', 'http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' );
+wp_enqueue_style( 'clean-google-font2', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' );
+wp_enqueue_style( 'clean-animate-style', get_template_directory_uri() . '/assets/css/animate.css' );
+wp_enqueue_style( 'clean-icomoon-style', get_template_directory_uri() . '/assets/css/icomoon.css' );
+wp_enqueue_style( 'clean-simplelineicons-style', get_template_directory_uri() . '/assets/css/simple-line-icons.css' );
+wp_enqueue_style( 'clean-oun-style', get_template_directory_uri() . '/assets/css/style.css' );
 
 wp_enqueue_script( 'clean-modernizr', get_template_directory_uri() . '/assets/js/modernizr-2.6.2.min.js', array(), '', false );
 
@@ -78,8 +78,8 @@ wp_enqueue_script( 'clean-easing-js', get_template_directory_uri() . '/assets/js
 wp_enqueue_script( 'clean-bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '', true );
 wp_enqueue_script( 'clean-waypoints-js', get_template_directory_uri() . '/assets/js/jquery.waypoints.min.js', array('jquery'), '', true );
 wp_enqueue_script( 'clean-main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '', true );
-
 }
+
 add_action( 'wp_enqueue_scripts', 'clean_scripts' );
 ```
 
@@ -92,15 +92,15 @@ add_action( 'wp_enqueue_scripts', 'clean_scripts' );
 ### Код в файл header.php
 
 ```
-       <?php wp_head(); ?>
-	</head>
+ <?php wp_head(); ?>
+</head>
 ```
 
 ### Код в файл footer.php
 
 ```
-   <?php wp_footer(); ?>
-	</body>
+<?php wp_footer(); ?>
+</body>
 ```
 ### Код в файл index.php
 
@@ -119,32 +119,32 @@ add_action( 'wp_enqueue_scripts', 'clean_scripts' );
 Код верстки в  index.php
 
 ```
-	<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="index.html"><span>Home <span class="border"></span></span></a></li>
-								<li><a href="right-sidebar.html"><span>Right Sidebar <span class="border"></span></span></a></li>
-								<li><a href="left-sidebar.html"><span>Left Sidebar <span class="border"></span></span></a></li>
+<ul class="nav navbar-nav navbar-right">
+			<li class="active"><a href="index.html"><span>Home <span class="border"></span></span></a></li>
+ 		<li><a href="right-sidebar.html"><span>Right Sidebar <span class="border"></span></span></a></li>
+			<li><a href="left-sidebar.html"><span>Left Sidebar <span class="border"></span></span></a></li>
 </ul>
 ```
 
 заменить на следующий:
 
 ```
-	<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => '',
-				'menu_class'        => 'nav navbar-nav navbar-right',
-			) );
-			?>
+<?php
+	wp_nav_menu( array(
+	'theme_location' => 'menu-1',
+	'menu_id'        => '',
+	'menu_class'        => 'nav navbar-nav navbar-right',
+	));
+?>
 ```
 
 ### Активация меню в файле functions.php
 
 ```
 // This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'clean' ),
-		) );
+register_nav_menus( array(
+'menu-1' => esc_html__( 'Primary', 'clean' ),
+));
 ```
 
 ### Стилизация активного пункта меню
@@ -164,10 +164,128 @@ add_action( 'wp_enqueue_scripts', 'clean_scripts' );
 Если идет ручная верстка необходимо предусмотеть изначально появление класса .current-menu-item и правильно его оформить
 
 ```
-	<ul class="nav navbar-nav navbar-right">
-								<li class="current-menu-item"><a href="index.html"> Главная </a> </li>
-	</ul>
+<ul class="nav navbar-nav navbar-right">
+	<li class="current-menu-item"><a href="index.html"> Главная </a> </li>
+</ul>
 ```
+
+## Вывод постов из категории на главной страницы
+
+### Как настроить цикл вывода постов на главаной страницы сайта
+
+Создать страницу front-page.php на основе index.php. Цикл вывода цитат
+
+Если это главная страница сайта и существует в кастомайзере параметр clean_home_category,
+выбор рубрики записей, из которой будет выводится посты, то выполнять вывод постов на главную страницу сайта.
+
+Взять записи из категории clean_home_category и вывести:
+взять все существующие миниатюры если их нет грузить изображение из указаного источника.
+если нет миниатюры нужно грузить изображения из указаного источника, который записуется в переменную $img_url
+при желании адрес можно вводить через кастомайзер
+
+```
+<?php if( is_front_page() && get_theme_mod('clean_home_category') ): ?>
+
+   <div id="fh5co-portfolio">
+
+        <?php $query = new WP_Query( array(
+            'category_name' => get_theme_mod('clean_home_category'),
+        ) ); ?>
+
+        <?php if ( $query->have_posts() ) : $i = 1; while ( $query->have_posts() ) :
+         $query->the_post(); ?>
+            <?php
+            if( has_post_thumbnail() ){
+                $img_url = get_the_post_thumbnail_url();
+            }else{
+                $img_url = 'https://picsum.photos/1280/864';
+            }
+            ?>
+
+            <div class="fh5co-portfolio-item <?php if( $i % 2 == 0 ) echo 'fh5co-img-right'; ?>">
+                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(<?php echo $img_url; ?>);"></div>
+                <div class="fh5co-portfolio-description">
+                    <h2><?php the_title(); ?></h2>
+                    <?php the_content(''); ?>
+                    <p><a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php _e('Читать далее', 'clean'); ?></a></p>
+                </div>
+            </div>
+
+        <?php $i++; endwhile; ?>
+        <?php else: ?>
+            <!-- no posts found -->
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
+
+    </div>
+   <?php endif; ?>
+        <!-- end is_front_page() && get_theme_mod('clean_home_category') ): -->
+```
+
+### Как создать поле ввода через кастомайзер
+
+Открыть файл inc/customizer.php
+
+```
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_options', array(
+        'title' => __('Вывод постов на главной странице', 'clean'),
+        'priority' => 10,
+    ));
+    $wp_customize->add_setting('clean_home_category', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_home_category',
+        array(
+            'label' => __('Отображение постов категории на главной странице', 'clean'),
+            'section' => 'clean_theme_options',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+```
+
+Чтобы вывести записанное в поле ввода в кастомайзере с помощью переменной clean_home_category
+
+```
+<?php $query = new WP_Query( array(
+            'category_name' => get_theme_mod('clean_home_category'),
+        ) ); ?>
+```
+
+### Вывести текст через кастомайзер
+
+```
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_descr', array(
+        'title' => __('Вывод описания сайта в шапке сайта', 'clean'),
+        'priority' => 9,
+    ));
+    $wp_customize->add_setting('clean_descr_page', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_descr_page',
+        array(
+            'label' => __('Введите описание сайта для вывода в шапке сайта', 'clean'),
+            'section' => 'clean_theme_descr',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+```
+
+### Вывести текст на сайте
+
+Чтобы введенный текст в кастомайзере вывести на сайт нужно вставить такой код в нужное место файла
+
+```
+	<p class=""><?php echo get_theme_mod('clean_descr_page'); ?></p>
+```
+
 
 
 

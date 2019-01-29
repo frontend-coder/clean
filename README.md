@@ -320,14 +320,68 @@ register_nav_menus( array(
 ```
   <?php get_template_part('template-parts/content', 'preview'); ?>
 ```
+## Cоздание страницы одиночного поста
 
+Взять за основу зазметку одиночной записи, он обычно имеет название single.html. На основе страницы
+category.php и single.html создать файл single.php, из первого взять подключение шапки и подвала,
+из другого файла взять разметку контентной части поста и боковой панели.
 
+Закомитить блок кода для сайдбара, на его месте установить код подключения sidebar
 
+```
+<?php get_sidebar(); ?>
+```
 
+Закомитить блок с кодом, который отвечает за вывод текста поста. Вместо кода поставить подобно этому:
 
+```
+     <?php  while ( have_posts() ) : the_post(); ?>
+        <?php get_template_part('template-parts/content', get_post_format()); ?>
+        <?php endwhile; ?>
 
+```
 
+Стандартный тип поста выводится с помощью шаблона template-parts/content.php
 
+```
+Стандартный             -  content.php
+Заметка                 -  content-aside.php
+Галерея                 -  content-gallery.php
+Ссылка                  -  content-link.php
+Изображение             -  content-image.php
+Цитата                  -  content-quote.php
+Статус                  -  content-status.php
+Видео                   -  content-video.php
+Аудио                   -  content-audio.php
+Чат                     -  content-chat.php
+
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 'quote' ) );
+```
+## Подключение виджетов в сайдбаре
+
+Регистрация виджета для блога
+
+```
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar', 'clean' ),
+		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'clean' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+```
+
+Подключение самого виджета в любом файле темы
+
+```
+<?php if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	return;
+}
+?>
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+```
 
 
 

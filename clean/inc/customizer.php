@@ -87,6 +87,25 @@ function clean_customize_register( $wp_customize ) {
 // End Theme Custom Customizer
 
 
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_favicon', array(
+        'title' => __('Настройка фавикона сайта', 'clean'),
+        'priority' => 3,
+    ));
+    $wp_customize->add_setting('clean_favicon_site', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_favicon_site',
+        array(
+            'label' => __('Вставьте адрес вашей фавикон сайта', 'clean'),
+            'section' => 'clean_theme_favicon',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+
 
 
 
@@ -96,7 +115,7 @@ function clean_customize_register( $wp_customize ) {
 // Theme Custom Customizer
     $wp_customize->add_section('clean_theme_descr', array(
         'title' => __('Вывод описания сайта в шапке сайта', 'clean'),
-        'priority' => 3,
+        'priority' => 4,
     ));
     $wp_customize->add_setting('clean_descr_page', array(
         'default' => '',

@@ -18,6 +18,14 @@
 	<title>Clean &mdash; A free HTML5 Template by FREEHTML5.CO</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="https://gmpg.org/xfn/11">
+		<link rel="shortcut icon" href="<?php echo get_theme_mod('clean_favicon_site'); ?>" />
+
+
+
+
+
+
+
 	<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -61,8 +69,31 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h1 class="intro-lead"> <?php bloginfo('description'); ?></h1>
-						<p class=""><?php echo get_theme_mod('clean_descr_page'); ?></p>
+
+
+
+						<h1 class="intro-lead">
+<?php if( is_single() ||  (is_page() && !is_front_page() ) ) : ?>
+<?php the_title(); ?>
+<?php else: ?>
+						 <?php bloginfo('description'); ?>
+<?php endif; ?>
+						</h1>
+
+<?php if( is_single() ||  (is_page() && !is_front_page() ) ) : ?>
+				 <p class=""><?php echo '&nbsp;' ?></p>
+<?php else: ?>
+						 <p class=""><?php echo get_theme_mod('clean_descr_page'); ?></p>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
 					</div>
 				</div>
 			</div>

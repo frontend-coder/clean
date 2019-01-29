@@ -31,8 +31,8 @@ function clean_customize_register( $wp_customize ) {
 
 // Theme Custom Customizer
     $wp_customize->add_section('clean_theme_options', array(
-        'title' => __('Вывод постов на главной странице', 'clean'),
-        'priority' => 10,
+        'title' => __('Из какой категории будут выводиться посты на главной странице', 'clean'),
+        'priority' => 0,
     ));
     $wp_customize->add_setting('clean_home_category', array(
         'default' => '',
@@ -41,7 +41,7 @@ function clean_customize_register( $wp_customize ) {
     $wp_customize->add_control(
         'clean_home_category',
         array(
-            'label' => __('Отображение постов категории на главной странице', 'clean'),
+            'label' => __('Введите ярлык категории, из которой будут выводиться посты на главную страницу сайта', 'clean'),
             'section' => 'clean_theme_options',
             'type' => 'text',
         )
@@ -50,9 +50,53 @@ function clean_customize_register( $wp_customize ) {
 
 
 // Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_colichestvo', array(
+        'title' => __('Настройка количества постов на главной страницы сайта', 'clean'),
+        'priority' => 1,
+    ));
+    $wp_customize->add_setting('clean_colichestvo', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_colichestvo',
+        array(
+            'label' => __('Введите количество постов, что будут выводиться только на главной странице сайта', 'clean'),
+            'section' => 'clean_theme_colichestvo',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+// Theme Custom Customizer
+    $wp_customize->add_section('clean_theme_thumbnail', array(
+        'title' => __('Настройка миниатюры-заглушки', 'clean'),
+        'priority' => 2,
+    ));
+    $wp_customize->add_setting('clean_thumbnail_page', array(
+        'default' => '',
+        //'transport'=>'postMessage',
+    ));
+    $wp_customize->add_control(
+        'clean_thumbnail_page',
+        array(
+            'label' => __('Введите адрес изображения, которое будет использоваться в качестве миниатюры заглушки', 'clean'),
+            'section' => 'clean_theme_thumbnail',
+            'type' => 'text',
+        )
+    );
+// End Theme Custom Customizer
+
+
+
+
+
+
+
+
+// Theme Custom Customizer
     $wp_customize->add_section('clean_theme_descr', array(
         'title' => __('Вывод описания сайта в шапке сайта', 'clean'),
-        'priority' => 9,
+        'priority' => 3,
     ));
     $wp_customize->add_setting('clean_descr_page', array(
         'default' => '',
@@ -67,6 +111,13 @@ function clean_customize_register( $wp_customize ) {
         )
     );
 // End Theme Custom Customizer
+
+
+
+
+
+
+
 
 
 

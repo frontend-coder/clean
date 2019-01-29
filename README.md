@@ -287,6 +287,47 @@ register_nav_menus( array(
 ```
 
 
+## Cоздание страницы категорий
+
+Создать файл category.php на основе html-шаблона. Его необходимо посадить на движок. Если используется underscores,
+возможно использовать файл archive.php.
+
+Самый важный цикл
+```
+    <div id="fh5co-portfolio">
+
+        <?php if ( have_posts() ) : $i = 1; while ( have_posts() ) : the_post(); ?>
+
+            <?php get_template_part('template-parts/content', 'preview'); ?>
+
+            <?php $i++; endwhile; ?>
+            <?php the_posts_pagination( array(
+                'end_size' => 1,
+                'mid_size' => 1,
+                'type' => 'list',
+            ) ); ?>
+        <?php else: ?>
+            <!-- no posts found -->
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
+    </div>
+```
+
+Шаблон вывода блока с контектом нужно настраивать в отдельном каталоге template-parts.
+Создать файл content-preview.php, поместить в него кусок кода, который отвечает за вывод одного блока, который
+и будет становиться частью цикла: вывод миниатюры, заголовка поста. цитаты или контента, ссылки читать далее.
+
+```
+  <?php get_template_part('template-parts/content', 'preview'); ?>
+```
+
+
+
+
+
+
+
+
 
 
 

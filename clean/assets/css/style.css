@@ -3070,6 +3070,93 @@ table th[class*="col-"] {
   }
 }
 
+
+
+
+.widget {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.search-form .screen-reader-text {
+color: #000; display: inline-block;
+font-size: 16px;
+font-family: "Roboto Slab", arial, sans-serif;
+margin-top: 0;
+margin-bottom: 5px;
+font-weight: 400;
+}
+.search-field {  width: 100%;
+text-indent: 10px;
+border: 1px solid #868f90;
+color: #868f90;
+}
+.search-submit {
+  width: 100%;
+  border: 1px solid #868f90;
+}
+
+.widget_recent_entries ul,
+.widget_recent_comments ul,
+.widget_archive ul,
+.widget_categories ul,
+.widget_meta ul {
+padding-left: 0;
+line-height: 1.15;
+list-style: none;
+}
+
+.widget_recent_entries ul li, .widget_recent_comments ul li,
+.widget_archive ul li, .widget_categories ul li,
+.widget_meta ul li {
+ margin-bottom: 10px;
+padding-left: 25px;
+}
+
+.widget_recent_entries ul li:last-child, .widget_recent_comments ul li:last-child,
+.widget_archive ul li:last-child, .widget_categories ul li:last-child,
+.widget_meta ul li:last-child {
+margin-bottom: 0px;
+}
+
+.widget_recent_comments ul li, .widget_recent_entries ul li a,
+.widget_recent_comments ul li a, .widget_archive ul li a,
+.widget_categories ul li a, .widget_meta ul li a {
+position: relative;
+color:#868f90;
+font-size: 15px;
+line-height: 20px;
+}
+
+.widget_recent_entries ul li a:before, .widget_recent_comments ul li:before,
+.widget_archive ul li a:before, .widget_categories ul li a:before,
+.widget_meta ul li a:before  {
+ font-family: 'icomoon';
+ speak: none;
+ font-style: normal;
+ font-weight: normal;
+ font-variant: normal;
+ text-transform: none;
+ line-height: 1;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ content: "\e116";
+ content: "\e042";
+ position: absolute;
+ top: 0;
+ left: -25px;
+ font-size: 18px;
+ color: #ccc;
+}
+.widget_recent_comments ul li:before {
+  left: 0;
+}
+
+
+
+
+
+
 fieldset {
   padding: 0;
   margin: 0;
@@ -3090,11 +3177,321 @@ legend {
 }
 
 label {
-  display: inline-block;
+  display: block;
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
+
+
+
+/*
+стилизация формы комментариев */
+
+.nocomments {
+  display: none; }
+
+.comment-number {
+  margin: 30px 0 20px 10px; }
+.comment-box {
+  background: #fff;
+  margin: 5px 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #ccc;
+  }
+
+.comment-number h4 {
+  display: inline;
+  font-size: 2.2rem;
+  font-weight: normal;
+  opacity: .7; }
+
+.comment-number span a,
+.comment-number span a:visited {
+  margin: 0 10px 0 20px;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  color: #777;
+  font-weight: bold;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  background: #e6e6e6;
+  background: rgba(154, 154, 154, 0.1);
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+.comment-number span a:hover {
+  background: rgba(154, 154, 154, 0.2); }
+
+.c-head {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color:#868f90;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  background: #ccc;
+  text-align: right; }
+
+.c-head span {
+  font-size: .9rem;
+  color: #868f90;
+  font-weight: normal;
+  margin-left: .3rem; }
+
+.c-head a,
+.c-head a:visited { font-size: 1.7rem;
+  letter-spacing: 1px;
+  font-weight: normal;
+  color: #868f90;
+  border-bottom: 1px dotted;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+.c-head a:hover {
+  color: #000;
+  border-bottom: 1px solid;
+  text-decoration: none; }
+
+
+.commentlist {  width: 100%;
+  padding: 0;
+
+  list-style: none;
+  text-align: right; }
+.commentlist ul {
+  list-style: none;
+}
+
+.commentlist .children,
+#comments ul.children {
+  width: 95%;
+  display: inline-block;
+  text-align: right; }
+
+.comment-content-box {
+  display: flex;
+  justify-content: space-between;
+ }
+
+.c-grav {
+  width: 200px;
+margin-right: 20px; }
+
+.c-grav img {
+  border: 4px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+          border-radius: 4px; }
+
+.c-body {
+  text-align: left;
+width: calc(100% - 200px);
+padding-bottom: 10px;
+}
+
+.c-body p {
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  text-align: left; }
+
+.reply {
+  padding: 10px 0;
+  display: inline-block; }
+
+.reply a,
+.reply a:visited {
+  color: #777;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  border-bottom: 1px dotted;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+.reply a:hover {
+  border-bottom: 1px solid;
+  text-decoration: none;
+  color: #13293e; }
+
+.navigation {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+    }
+.pagination_center {
+  display: inline-block;
+}
+.alignleft {
+  display: inline-block; }
+
+.alignright {
+  display: inline-block; }
+
+#respond {
+  background: #fff;
+  margin: 5px 0;
+  border: 1px solid #dedede; }
+
+#postcomment {
+  margin: 10px;
+  padding: 10px 20px 10px 0;
+  font-size: 1.3rem;
+  color: #868f90;
+  background: #eeef;
+  text-align: right; }
+
+form#commentform, p.logged-in {
+  margin: 30px;
+  font-size: 1.20rem; }
+
+
+.comments-title a, p.logged-in a,
+#cancel-comment-reply-link {
+  color: #868f90;
+ -webkit-transition: all 0.2s ease;
+ -o-transition: all 0.2s ease;
+ transition: all 0.2s ease;
+}
+#cancel-comment-reply-link {
+padding-left: 20px;
+}
+.comments-title a:hover,
+.cancel-comment-reply:hover {
+text-decoration: underline;
+}
+
+
+p.logged-in a,
+.bloged-in a {
+  color: #868f90;
+  text-decoration: underline;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+
+p.logged-in a:hover,
+.bloged-in a:hover {
+ text-decoration: none;
+}
+
+
+
+.bloged-in {
+  font-size: 1.20rem; }
+
+#commentform .header_button {
+border: none;
+color: #868f90;
+padding: 5px 20px;
+background: #eeee;
+font-size: 1.80rem; outline: none;
+}
+#commentform .header_button:hover {
+background: #e0e0e0e0;
+-webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+
+
+
+
+
+.commenting_input {
+  display: block;
+  width: 100%;
+  height: 40px;font-size: 1.5rem;
+letter-spacing: 1.1px;
+  text-indent: 10px;
+  border: 1px solid #ddd;
+  color: #868f90;
+  outline: none;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background-color: #ffffff !important; }
+
+.commenting_textarea {
+  display: block;
+  width: 100%;
+  height: 140px;
+  resize: vertical;
+  text-indent: 10px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  border: 1px solid #ddd;
+  color: #868f90;
+  outline: none;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+label.comment-field {
+font-size: 1.5rem;
+  display: block;
+  margin: 10px 0 5px 0;
+   color: #868f90; }
+
+#commentform .mainbuttons {
+  border: none; }
+
+#commentform .commenting_input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 70px #ffffff !important;
+  /* Цвет фона */
+  -webkit-text-fill-color: #aaaaaa !important;
+  /* цвет текста */
+   color: #868f90 !important;
+  /* цвет текста */
+  background-color: #fff; }
+
+#commentform .commenting_input:focus-within {
+  background-color: #ffffff !important;
+  color: #868f90; }
+
+.form_input:hover {
+  background-color: #ffffff !important;
+  color: #868f90; }
+
+.form_input:focus {
+  background-color: #ffffff !important;
+  color: #868f90; }
+
+.form_input:focus-within {
+  background-color: #ffffff !important;
+  color: #868f90; }
+
+.form_input:visited {
+  background-color: red !important;
+  color: #868f90; }
+
+.pagesearch_title {
+  font-size: 1.5625rem;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 25px;
+  text-transform: uppercase; }
+/*  end
+стилизация формы комментариев */
+
+
+
+
+
+
+
+
+
+
+
 
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -5551,6 +5948,9 @@ a.badge:hover, a.badge:focus {
 .jumbotron .container {
   max-width: 100%;
 }
+
+
+
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding-top: 48px;

@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-01-29 00:41+0200\n"
+"PO-Revision-Date: 2019-02-10 18:57+0200\n"
 "Language-Team: \n"
 "X-Generator: Poedit 2.2.1\n"
 "Last-Translator: \n"
@@ -41,11 +41,11 @@ msgstr ""
 #. translators: 1: title.
 #: comments.php:34
 msgid "One thought on &ldquo;%1$s&rdquo;"
-msgstr ""
+msgstr "Один ответ на &ldquo;%1$s&rdquo;"
 
 #: comments.php:67
 msgid "Comments are closed."
-msgstr ""
+msgstr "Комментирование закрыто"
 
 #: footer.php:18
 msgid "https://wordpress.org/"
@@ -89,12 +89,12 @@ msgstr ""
 #. translators: 1: list of categories.
 #: inc/template-tags.php:55
 msgid "Posted in %1$s"
-msgstr ""
+msgstr "Опубликовано: %1$"
 
 #. translators: 1: list of tags.
 #: inc/template-tags.php:62
 msgid "Tagged %1$s"
-msgstr ""
+msgstr "Метки: %1$"
 
 #. translators: %s: post title
 #: inc/template-tags.php:72
@@ -113,7 +113,7 @@ msgstr ""
 
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
-msgstr ""
+msgstr "Ничего не найдено"
 
 #. translators: 1: link to WP admin new post page.
 #: template-parts/content-none.php:25

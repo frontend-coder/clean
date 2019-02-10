@@ -1,55 +1,29 @@
 <?php
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package Clean
- */
-
 get_header();
 ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+<?php if( get_theme_mod('clean_home_category') ): ?>
+    <div id="fh5co-portfolio">
 
-		<?php if ( have_posts() ) : ?>
+        <?php if ( have_posts() ) : $i = 1; while ( have_posts() ) : the_post(); ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'clean' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+            <?php get_template_part('template-parts/content', 'preview'); ?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+            <?php $i++; endwhile; ?>
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+        <?php else: ?>
+            <!-- no posts found -->
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
 
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+    </div>
+    <div class="clearfix"></div>
+                <?php the_posts_pagination( array(
+                'end_size' => 1,
+                'mid_size' => 1,
+                'type' => 'list',
+            ) ); ?>
+<?php endif; ?>
 
 <?php
-get_sidebar();
 get_footer();

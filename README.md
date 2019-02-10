@@ -401,25 +401,22 @@ if( has_post_thumbnail() ){
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 ```
 
+## Подключение фрейворка Carbon Fields 1.6
 
-
-
-
-
-
-
-
-
-
-
-
-
-**жирный текст**
-*курсив*
-***жирный курсив***
-
-
+Скачать фрейворк из официального сайта фрейворка, архив разорхивировать и каталог переместить в корень темы каталог с файлами фреймворка.
+В файле function.php подключить фрейворк, а именно файл carbon-fields/carbon-fields-plugin.php
+Создать файл с кастомными настройками фрейворка, с помощью которых будет выполняться настройка панели управления темой
 
 ```
-code block
+require_once get_template_directory(). '/inc/carbon-fields/carbon-fields-plugin.php';
+
+add_action( 'carbon_register_fields', 'crb_register_custom_fields' );
+function crb_register_custom_fields() {
+//путь к пользовательскому файлу определения поля (полей), измените под себя
+require_once __DIR__ . '/inc/carbon-fields/custom-fields/header-scripts.php';
+require_once __DIR__ . '/inc/carbon-fields/custom-fields/frontpage-scripts.php';
+}
+
 ```
+header-scripts.php - произвольное название, в котором подключается опции темы theme_options
+frontpage-scripts.php - произвольное название, в котором подключается опции темы post_meta

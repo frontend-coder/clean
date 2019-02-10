@@ -1,75 +1,97 @@
 <?php
 /**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package Clean
+ * @package WordPress
+ * @subpackage Clean
  */
 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
-if ( post_password_required() ) {
-	return;
-}
-?>
+// Do not delete these lines
+	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
+		die ('Please do not load this page directly. Thanks!');
 
-<div id="comments" class="comments-area">
+	if ( post_password_required() ) { ?>
+		<p class="nocomments"><?php _e( 'Эта статья защищена паролем. Введите пароль, чтобы посмотреть комментарии.', 'clean' ); ?></p>
 
 	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
-			$clean_comment_count = get_comments_number();
-			if ( '1' === $clean_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'clean' ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $clean_comment_count, 'comments title', 'clean' ) ),
-					number_format_i18n( $clean_comment_count ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			}
-			?>
-		</h2><!-- .comments-title -->
+		return;
+	}
+?>
 
-		<?php the_comments_navigation(); ?>
+<!-- You can start editing here. -->
 
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
-			?>
-		</ol><!-- .comment-list -->
+<?php if ( have_comments()) : ?>
 
-		<?php
-		the_comments_navigation();
 
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'clean' ); ?></p>
-			<?php
-		endif;
 
-	endif; // Check for have_comments().
+<div class="comments-title" style="float:right;"><?php comments_number( __( 'Нет комментариев', 'clean' ),  __( 'Один комментарий', 'clean' ), __( '% Комментариев', 'clean' ) );?> </div>
+<div style="clear:both"></div>
+	<ol class="commentlist" itemscope="" itemtype="http://schema.org/UserComments">
+	<?php wp_list_comments( array(
+			'reply_text' => __( 'Ответить', 'clean' ),
+			'callback' => 'inspiration_comment'
+		)); ?>
+	</ol>
+	<div class="navigation">
+		<div class="alignleftcom"><?php previous_comments_link() ?></div>
+		<div class="alignrightcom"><?php next_comments_link() ?></div>
+	</div>
+ <?php else : // this is displayed if there are no comments so far ?>
 
-	comment_form();
-	?>
+	<?php if ('open' == $post->comment_status) : ?>
+		<!-- If comments are open, but there are no comments. -->
 
-</div><!-- #comments -->
+	 <?php else : // comments are closed ?>
+		<!-- If comments are closed. -->
+	<?php endif; ?>
+<?php endif; ?>
+<?php if ('open' == $post->comment_status) : ?>
+<div id="respond">
+	<div id="postcomment" class="comments-title"><?php comment_form_title( __( 'Оставьте свой комментарий или вопрос', 'inspiration' ), __( 'Оставьте комментарий к %s', 'inspiration' ) ); ?></div>
+<div class="cancel-comment-reply">
+	<small><?php cancel_comment_reply_link(); ?></small>
+</div>
+<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
+<p class="logged-in"><?php _e( 'Вы должны', 'clean' ); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>"><?php _e( 'войти', 'clean' ); ?>  </a> <?php _e( 'чтобы комментировать статью.', 'clean' ); ?>
+</p>
+<?php else : ?>
+
+<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+<?php if ( $user_ID ) : ?>
+<p class="logged-in"><?php _e( 'Вы вошли как', 'clean' ); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e( 'Выйти из этого аккаунта', 'clean' ); ?>"><?php _e( 'Выйти', 'clean' ); ?> &raquo;</a></p>
+<?php else : ?>
+
+
+<div>
+<label class="comment-field" for="author"><small><?php _e( 'Имя', 'clean' ); ?> <?php if ($req) echo __( '(обязательно)', 'clean' ); ?></small></label>
+	<input class="commenting_input" type="text" name="author" id="author"  value="<?php echo $comment_author; ?>" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
+</div>
+
+<div>
+<label for="email" class="comment-field"><small><?php _e( 'Емаил (не будет опубликован)', 'clean' ); ?> <?php if ($req) echo __( '(обязательно)', 'clean' ); ?></small></label>
+<input class="commenting_input" type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
+</div>
+
+<div>
+<label class="comment-field" for="url"><small><?php _e( 'Адрес Вашего сайта', 'clean' ); ?></small></label>
+<input class="commenting_input" type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" tabindex="3" />
+</div>
+
+<?php endif; ?>
+<div>
+
+<div>
+	<label for="comment" class="comment-field">Комментарий</label><textarea class="commenting_textarea" name="comment" id="comment" rows="4" tabindex="4" ></textarea></div>
+</div>
+
+<div>
+	<input class="header_button" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Добавить комментарий', 'clean' ); ?>" />
+<?php comment_id_fields(); ?>
+</div>
+
+<?php do_action('comment_form', $post->ID); ?>
+
+</form>
+
+<?php endif; // If registration required and not logged in ?>
+</div>
+
+<?php endif; // if you delete this the sky will fall on your head ?>

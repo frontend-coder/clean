@@ -357,6 +357,24 @@ category.php и single.html создать файл single.php, из перво�
 
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 'quote' ) );
 ```
+## Вывод блока с контентом
+
+```
+<?php
+if( has_post_thumbnail() ){
+    $img_url = get_the_post_thumbnail_url();
+}else{
+    $img_url = 'https://picsum.photos/1280/864';
+}
+?>
+<img src="<?php echo  $img_url; ?>" >
+      <h2><?php the_title(); ?></h2>
+								 <?php the_content(); ?>
+
+
+
+```
+
 ## Подключение виджетов в сайдбаре
 
 Регистрация виджета для блога

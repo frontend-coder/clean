@@ -15,16 +15,13 @@
 	<head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Clean &mdash; A free HTML5 Template by FREEHTML5.CO</title>
+	<title> <?php echo wp_get_document_title() ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="https://gmpg.org/xfn/11">
-		<link rel="shortcut icon" href="<?php echo get_theme_mod('clean_favicon_site'); ?>" />
 
-
-
-
-
-
+<?php if(carbon_get_theme_option('site_favicon')){?>
+		<link rel="shortcut icon" href="<?php echo carbon_get_theme_option('site_favicon'); ?>" />
+  <?php } ?>
 
 	<?php wp_head(); ?>
 	</head>
@@ -38,7 +35,15 @@
 						<div class="navbar-header">
 						<!-- Mobile Toggle Menu Button -->
 						<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-						<a class="navbar-brand" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a>
+						<a class="navbar-brand" href="<?php echo home_url('/'); ?>">
+
+<?php if(carbon_get_theme_option('site_logo')){?>
+		<?php echo carbon_get_theme_option('site_logo'); ?>
+  <?php } else { ?>
+<?php echo 'clean'; ?>
+<?php } ?>
+
+						</a>
 						</div>
 						<div id="fh5co-navbar" class="navbar-collapse collapse">
 
@@ -70,30 +75,30 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
 
-
-
 						<h1 class="intro-lead">
 <?php if( is_single() ||  (is_page() && !is_front_page() ) ) : ?>
 <?php the_title(); ?>
 <?php else: ?>
-						 <?php bloginfo('description'); ?>
+<?php if(carbon_get_theme_option('site_name')){?>
+		<?php echo carbon_get_theme_option('site_name'); ?>
+  <?php } else { ?>
+ <?php bloginfo('description'); ?>
+<?php } ?>
 <?php endif; ?>
 						</h1>
 
 <?php if( is_single() ||  (is_page() && !is_front_page() ) ) : ?>
 				 <p class=""><?php echo '&nbsp;' ?></p>
 <?php else: ?>
-						 <p class=""><?php echo get_theme_mod('clean_descr_page'); ?></p>
+						 <p class="">
+
+						 	<?php if(carbon_get_theme_option('site_descr')){?>
+		<?php echo carbon_get_theme_option('site_descr'); ?>
+  <?php } else { ?>
+ <?php echo '100% Free HTML5 Template by FREEHTML5.co'; ?>
+<?php } ?>
+						 	</p>
 <?php endif; ?>
-
-
-
-
-
-
-
-
-
 					</div>
 				</div>
 			</div>

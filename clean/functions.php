@@ -6,6 +6,17 @@
  *
  * @package Clean
  */
+require_once get_template_directory(). '/inc/carbon-fields/carbon-fields-plugin.php';
+
+add_action( 'carbon_register_fields', 'crb_register_custom_fields' );
+function crb_register_custom_fields() {
+//путь к пользовательскому файлу определения поля (полей), измените под себя
+require_once __DIR__ . '/inc/carbon-fields/custom-fields/header-scripts.php';
+require_once __DIR__ . '/inc/carbon-fields/custom-fields/frontpage-scripts.php';
+
+}
+
+
 
 if ( ! function_exists( 'clean_setup' ) ) :
 	/**
@@ -31,7 +42,7 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 
 		 * Let WordPress manage the document title.
 		 * By adding theme support, we declare that this theme does not use a
 		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
+		 * provide it for us. выводит title page auto
 		 */
 		add_theme_support( 'title-tag' );
 
@@ -196,4 +207,11 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+
+
+
+
+
 
